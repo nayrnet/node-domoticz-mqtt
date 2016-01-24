@@ -38,7 +38,7 @@ domoticz.prototype.connect = function(options) {
 	domoMQTT.on('connect', function () {
 	        domoMQTT.publish(STATUS, 'true');
         	domoMQTT.subscribe('domoticz/out');
-	        console.log("Domoticz MQTT: connected");
+		if (TRACE) { console.log("Domoticz MQTT: connected") };
 	});
  
 	// OnExit

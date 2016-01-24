@@ -3,13 +3,13 @@ var     mqtt		= require('./domoticz.js');
 
 // Options:
 var options = {
-	idx: 		[ 1, 2, 3, 4 ],
-        log:            false,
-	status: 	'example-app/connected',
-	host: 		'localhost'
+	idx:		[ 1, 2, 3, 4 ],
+	log:		false,
+	status:		'example-app/connected',
+	host:		'localhost'
 };
 
-var     domoticz        = new mqtt.domoticz(options);
+var domoticz = new mqtt.domoticz(options);
 
 // Log anything matching our IDX
 domoticz.on('data', function(data) {
