@@ -5,27 +5,25 @@ NodeJS Module for talking to Domoticz via MQTT Interface.
 see the example.js to get started.
 
 ## Functions:
-* switch(idx,level)
-  * level 0 = Off
-  * level 100 = On
-  * level -1 = Toggle
-  * level 1-99 = Set Level
+```javascript
+// Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, evel 1-99 = Set Level
+domoticz.switch(idx,level);
 
-* device(idx,nvalue,svalue)
+// Publish uDevice: nvalue = int, svalue = string
+domoticz.device(idx,nvalue,svalue);
 
-* scene(idx,cmd)
-  * cmd is optional, use "Off" for groups.
+// Publish Scene: cmd is optional, use "Off" for groups.
+domoticz.scene(idx,cmd);
 
-* uservar(idx,value)
+// Publish User Variable
+domoticz.uservar(idx,value);
 
-* notify(subject,body,priority,sound)
-  * priority and sound are optional
+// Publish Notification: priority and sound are optional
+domoticz.notify(subject,body,priority,sound)
 
-* request(idx)
-  * push current state out MQTT
-
-* log(msg)
-  * NOT YET SUPPORTED.
+// Request Device Status
+domoticz.request(idx);
+```
 
 ## Options
 * idx - an array of device idx to watch for
@@ -33,4 +31,6 @@ see the example.js to get started.
 * status - MQTT Path for reporting your app is online 
 * host - Host of your MQTT Broker, defaults to localhost
 
-
+## About:
+By: Ryan Hunt
+License: GPL-3.0
