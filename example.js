@@ -1,8 +1,9 @@
 #!/usr/bin/nodejs
 var     mqtt		= require('./domoticz.js');
 
+// Options:
 var options = {
-	idx: 		[ 1, 2, 3, 4, 169 ],
+	idx: 		[ 1, 2, 3, 4 ],
         log:            false,
 	status: 	'example-app/connected',
 	host: 		'localhost'
@@ -10,9 +11,12 @@ var options = {
 
 var     domoticz        = new mqtt.domoticz(options);
 
+// Log anything matching our IDX
 domoticz.on('data', function(data) {
         message = JSON.stringify(data)
         console.log(message.toString());
 });
 
-domoticz.switch(169,7);
+// Set IDX #1 to ON
+domoticz.switch(1,100);
+

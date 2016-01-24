@@ -17,6 +17,7 @@ NodeJS Module for talking to Domoticz via MQTT Interface.
 * request(idx)
   * push current state out MQTT
 * log(msg)
+  * NOT YET SUPPORTED.
 
 ## Options
 * idx - an array of device idx to watch for
