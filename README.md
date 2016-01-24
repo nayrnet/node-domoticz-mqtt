@@ -4,18 +4,18 @@ NodeJS Module for talking to Domoticz via MQTT Interface.
 
 ## Functions:
 * switch(idx,level)
-** level 0 = Off
-** level 100 = On
-** level -1 = Toggle
-** level 1-99 = Dim
+  * level 0 = Off
+  * level 100 = On
+  * level -1 = Toggle
+  * level 1-99 = Dim
 * device(idx,nvalue,svalue)
 * scene(idx,cmd)
-** cmd is optional, use "Off" for groups.
+  * cmd is optional, use "Off" for groups.
 * uservar(idx,value)
 * notify(subject,body,priority,sound)
-** priority and sound are optional
+  * priority and sound are optional
 * request(idx)
-** push current state out MQTT
+  * push current state out MQTT
 * log(msg)
 
 ## Options
