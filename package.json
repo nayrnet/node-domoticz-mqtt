@@ -1,0 +1,28 @@
+{
+  "name": "node-domoticz-mqtt",
+  "version": "1.0.0",
+  "description": "Domoticz-MQTT Module",
+  "main": "domoticz.js",
+  "dependencies": {
+    "mqtt": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayrnet/node-domoticz-mqtt.git"
+  },
+  "keywords": [
+    "Domoticz",
+    "MQTT",
+    "JSON"
+  ],
+  "author": "Ryan Hunt",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nayrnet/node-domoticz-mqtt/issues"
+  },
+  "homepage": "https://github.com/nayrnet/node-domoticz-mqtt#readme"
+}
