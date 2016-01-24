@@ -6,6 +6,9 @@ see the example.js to get started.
 
 ## Functions:
 ```javascript
+// Callback for any device updates matching IDX options. data is json
+domoticz.on('data', function(data){ console.log("device updated") });
+
 // Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, evel 1-99 = Set Level
 domoticz.switch(idx,level);
 
