@@ -47,6 +47,13 @@ domoticz.prototype.connect = function(host) {
 		self.emit('connect');
 	});
  
+	// OnError
+	domoMQTT.on('error', function (error) {
+		var self = this;
+		if (TRACE) { console.log("ERROR: " + error.toString()) };
+		self.emit('error', self.error);
+	});
+
 	// OnExit
 	process.on( "SIGINT", function() {
 	        domoMQTT.publish(STATUS, 'false');
@@ -54,7 +61,7 @@ domoticz.prototype.connect = function(host) {
 	        setTimeout(function() {
                 	process.exit()
         	}, 500);
-	} );
+	});
 
 	return domoMQTT;
 }

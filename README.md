@@ -55,7 +55,7 @@ domoticz.scene(idx,cmd);
 domoticz.uservar(idx,value);
 
 // Publish Notification: priority and sound are optional
-domoticz.notify(subject,body,priority,sound)
+domoticz.notify(subject,body,priority,sound);
 
 // Request Device Status
 domoticz.request(idx);
