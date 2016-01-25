@@ -37,7 +37,10 @@ domoticz.on('connect', function() {
 ## Functions:
 ```javascript
 // Callback for any devices from options. Data is json format.
-domoticz.on('data', function(data){ console.log("device updated") });
+domoticz.on('data', function(data){  });
+
+// Callback on connect
+domoticz.on('connect', function(data){  });
 
 // Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, level 1-99 = Set Level
 domoticz.switch(idx,level);
@@ -59,7 +62,7 @@ domoticz.request(idx);
 ```
 
 ## Options
-* idx - an array of device idx to watch for
+* idx - an array of device idx to watch and update on connect.
 * status - MQTT Path for reporting your app is online 
 * host - Host of your MQTT Broker, defaults to localhost
 * log - boolean to show detailed logs, defaults to localhost
