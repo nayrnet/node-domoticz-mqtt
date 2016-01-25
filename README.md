@@ -40,4 +40,3 @@ domoticz.request(idx);
 
 ## About:
 By: Ryan Hunt
-License: GPL-3.0
