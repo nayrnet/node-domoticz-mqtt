@@ -42,6 +42,9 @@ domoticz.on('data', function(data){  });
 // Callback on connect
 domoticz.on('connect', function(){  });
 
+// Callback on connect
+domoticz.on('error', function(error){  });
+
 // Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, level 1-99 = Set Level
 domoticz.switch(idx,level);
 
