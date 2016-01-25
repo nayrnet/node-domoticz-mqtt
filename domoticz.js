@@ -39,6 +39,12 @@ domoticz.prototype.connect = function(host) {
 	        domoMQTT.publish(STATUS, 'true');
         	domoMQTT.subscribe('domoticz/out');
 		if (TRACE) { console.log("Domoticz MQTT: connected") };
+		var i = 0;
+		while (IDX[i]) {		// Request Fresh device status on connect.
+			self.request(IDX[i]);
+			i++;
+		}
+		self.emit('connect');
 	});
  
 	// OnExit
@@ -70,7 +76,7 @@ domoticz.prototype.switch = function(id,lvl) {
         else if (lvl === 0) { cmd = "Off" }
         else if (lvl < 0) { cmd = "Toggle" }
         var state = { 'command': 'switchlight', 'idx': id, 'switchcmd': cmd };
-	if (cmd === 'Set Level') { state['level'] = lvl };
+	if ((cmd === 'Set Level')||(cmd === 'On')) { state['level'] = lvl };
         if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state).toString()) }
         self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
 	return true;

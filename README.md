@@ -21,14 +21,17 @@ var options = {
 
 var domoticz = new mqtt.domoticz(options);
 
-// Log everything matching our IDX from Options
+// Log anything matching our IDX
 domoticz.on('data', function(data) {
         message = JSON.stringify(data)
-        console.log(message);
+        console.log(message.toString());
 });
 
-// Set IDX #1 to ON
-domoticz.switch(1,100);
+// Set IDX #1 to ON after connection and send notification.
+domoticz.on('connect', function() {
+        domoticz.switch(1,100);
+        domoticz.notify('IDX#1','Turned on');
+});
 ```
 
 ## Functions:
