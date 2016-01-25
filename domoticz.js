@@ -16,15 +16,15 @@ var domoticz = function(options) {
 	IDX 		= options.idx;
 	STATUS 		= options.status;
 	HOST 		= options.host;
-	this.domoMQTT	= this.connect(options);
+	this.domoMQTT	= this.connect(options.host);
 }
 
 util.inherits(domoticz, events.EventEmitter);
 
 // Connnect
-domoticz.prototype.connect = function(options) {
+domoticz.prototype.connect = function(host) {
         var self = this;
-        var domoMQTT        = mqtt.connect('mqtt://' + options);
+        var domoMQTT        = mqtt.connect('mqtt://' + host);
 	// Incoming MQTT Message
 	domoMQTT.on('message', function (topic, message) {
         	var jsonData = JSON.parse(message)
@@ -68,9 +68,10 @@ domoticz.prototype.switch = function(id,lvl) {
         var cmd = "Set Level";
         if (lvl > 99) { cmd = "On" }
         else if (lvl === 0) { cmd = "Off" }
-        else if (lvl < 0) { cmd = "Toggle", lvl = 0; }
-        var state = { 'command': 'switchlight', 'idx': id, 'switchcmd': cmd, 'level': lvl };
-        if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state)) }
+        else if (lvl < 0) { cmd = "Toggle" }
+        var state = { 'command': 'switchlight', 'idx': id, 'switchcmd': cmd };
+	if (cmd === 'Set Level') { state['level'] = lvl };
+        if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state).toString()) }
         self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
 	return true;
 }
