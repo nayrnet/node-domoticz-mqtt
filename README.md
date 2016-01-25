@@ -71,7 +71,7 @@ domoticz.request(idx);
 * idx - an array of device idx to watch and update on connect.
 * status - MQTT Path for reporting your app is online 
 * host - Host of your MQTT Broker, defaults to localhost
-* log - boolean to show detailed logs, defaults to localhost
+* log - boolean to show detailed logs, defaults to false
 
 ## About:
 By: Ryan Hunt
