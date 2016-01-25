@@ -4,7 +4,7 @@ var     mqtt            = require('mqtt'),
 	events 		= require('events'),
 	util   		= require('util');
 	STATUS		= 'demo-app/connected',
-        TRACE           = false,
+        TRACE           = true,
 	HOST		= '127.0.0.1',
         IDX             = [ ];    		// Device IDX you want to watch.   
 
@@ -147,7 +147,7 @@ domoticz.prototype.request = function(id) {
 domoticz.prototype.log = function(msg) {
 	var self = this;
 	if (!msg) { return false };
-        var state = { 'command': 'addlogmessage', 'message': msg.toString };
+        var state = { 'command': 'addlogmessage', 'message': msg.toString() };
         if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state)) }
         self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
 	return true;

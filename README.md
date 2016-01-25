@@ -27,10 +27,10 @@ domoticz.on('data', function(data) {
         console.log(message.toString());
 });
 
-// Set IDX #1 to ON after connection and send notification.
+// Set IDX #1 to ON after connection and log it.
 domoticz.on('connect', function() {
         domoticz.switch(1,100);
-        domoticz.notify('IDX#1','Turned on');
+        domoticz.log('IDX#1 turned on because I said so.');
 });
 ```
 
@@ -56,6 +56,9 @@ domoticz.scene(idx,cmd);
 
 // Publish User Variable
 domoticz.uservar(idx,value);
+
+// Publish Domoticz Log Status
+domoticz.log(message);
 
 // Publish Notification: priority and sound are optional
 domoticz.notify(subject,body,priority,sound);
