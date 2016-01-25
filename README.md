@@ -33,7 +33,7 @@ domoticz.switch(1,100);
 
 ## Functions:
 ```javascript
-// Callback for any device updates matching from options. Data is json format.
+// Callback for any devices from options. Data is json format.
 domoticz.on('data', function(data){ console.log("device updated") });
 
 // Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, level 1-99 = Set Level
