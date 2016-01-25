@@ -24,7 +24,7 @@ var domoticz = new mqtt.domoticz(options);
 // Log everything matching our IDX from Options
 domoticz.on('data', function(data) {
         message = JSON.stringify(data)
-        console.log(message.toString());
+        console.log(message);
 });
 
 // Set IDX #1 to ON
