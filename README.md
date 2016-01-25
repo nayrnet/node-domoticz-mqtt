@@ -27,10 +27,10 @@ domoticz.on('data', function(data) {
         console.log(message.toString());
 });
 
-// Set IDX #1 to ON after connection and log it.
+// Set IDX #1 to ON after connection and log our connection.
 domoticz.on('connect', function() {
         domoticz.switch(1,100);
-        domoticz.log('IDX#1 turned on because I said so.');
+        domoticz.log('My example app connected.');
 });
 ```
 
