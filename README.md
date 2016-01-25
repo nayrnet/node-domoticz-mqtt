@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/npm.svg)]()
 [![node](https://img.shields.io/node/v/gh-badges.svg)]()
 
-NodeJS Module for talking to Domoticz via MQTT Interface.
+NodeJS Module for communication with Domoticz via MQTT Interface.
 
 ## Example:
 ```javascript
@@ -14,14 +14,14 @@ var     mqtt            = require('node-domoticz-mqtt');
 // Options:
 var options = {
         idx:            [ 1, 2, 3, 4 ],
-        log:            false,
+        host:           'localhost',
         status:         'example-app/connected',
-        host:           'localhost'
+        log:            false
 };
 
 var domoticz = new mqtt.domoticz(options);
 
-// Log anything matching our IDX
+// Log everything matching our IDX from Options
 domoticz.on('data', function(data) {
         message = JSON.stringify(data)
         console.log(message.toString());
@@ -33,7 +33,7 @@ domoticz.switch(1,100);
 
 ## Functions:
 ```javascript
-// Callback for any device updates matching IDX options. data is json
+// Callback for any device updates matching from options. Data is json format.
 domoticz.on('data', function(data){ console.log("device updated") });
 
 // Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, level 1-99 = Set Level
