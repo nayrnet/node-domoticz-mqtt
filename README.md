@@ -1,5 +1,9 @@
 # node-domoticz-mqtt
 
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![npm](https://img.shields.io/npm/v/npm.svg)]()
+[![node](https://img.shields.io/node/v/gh-badges.svg)]()
+
 NodeJS Module for talking to Domoticz via MQTT Interface.
 
 see the example.js to get started.
