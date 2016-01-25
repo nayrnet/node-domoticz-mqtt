@@ -17,7 +17,9 @@
   "keywords": [
     "Domoticz",
     "MQTT",
-    "JSON"
+    "JSON",
+    "API",
+    "Home Automation"
   ],
   "author": "Ryan Hunt",
   "license": "GPL-3.0",
