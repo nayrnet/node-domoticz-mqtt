@@ -15,7 +15,6 @@ var     mqtt            = require('node-domoticz-mqtt');
 var options = {
         idx:            [ 1, 2, 3, 4 ],
         host:           'localhost',
-        status:         'example-app/connected',
         log:            false
 };
 
@@ -72,6 +71,10 @@ domoticz.request(idx);
 * status - MQTT Path for reporting your app is online 
 * host - Host of your MQTT Broker, defaults to localhost
 * log - boolean to show detailed logs, defaults to false
+
+## More
+* Domoticz Discussion: https://www.domoticz.com/forum/viewtopic.php?f=21&t=10190
+* Implemented in: https://github.com/nayrnet/domoticz-htc
 
 ## About:
 By: Ryan Hunt

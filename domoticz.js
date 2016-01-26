@@ -3,7 +3,7 @@
 var     mqtt            = require('mqtt'),
 	events 		= require('events'),
 	util   		= require('util');
-	STATUS		= 'demo-app/connected',
+	STATUS		= 'domoticz-mqtt-app/connected',
         TRACE           = true,
 	HOST		= '127.0.0.1',
         IDX             = [ ];    		// Device IDX you want to watch.   
@@ -16,7 +16,7 @@ var domoticz = function(options) {
 	IDX 		= options.idx;
 	STATUS 		= options.status;
 	HOST 		= options.host;
-	this.domoMQTT	= this.connect(options.host);
+	this.domoMQTT	= this.connect(HOST);
 }
 
 util.inherits(domoticz, events.EventEmitter);
@@ -28,7 +28,7 @@ domoticz.prototype.connect = function(host) {
 	// Incoming MQTT Message
 	domoMQTT.on('message', function (topic, message) {
         	var jsonData = JSON.parse(message)
-	        if (TRACE) { console.log('IN: ' + message.toString()) };
+	        if (TRACE) { console.log('MQTT IN: ' + message.toString()) };
 	        if (IDX.contains(jsonData.idx)) {
 	                self.mqttData(jsonData);
         	}
@@ -49,7 +49,6 @@ domoticz.prototype.connect = function(host) {
  
 	// OnError
 	domoMQTT.on('error', function (error) {
-		var self = this;
 		if (TRACE) { console.log("ERROR: " + error.toString()) };
 		self.emit('error', self.error);
 	});
@@ -159,4 +158,3 @@ Array.prototype.contains = function(element){
 };
  
 exports.domoticz = domoticz;
-
