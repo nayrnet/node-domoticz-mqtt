@@ -13,10 +13,10 @@ var	mqtt	= require('node-domoticz-mqtt');
 
 // Options:
 var options = {
-	idx	: [ 1, 2, 3, 4 ],
-	host	: 'localhost',
-	request	: true,
-	log	: false
+	idx: 		[ 1, 2, 3, 4 ],
+	host: 		'localhost',
+	request:	true,
+	log: 		false
 };
 
 var domoticz = new mqtt.domoticz(options);
