@@ -9,14 +9,14 @@ NodeJS Module for communication with Domoticz via MQTT Interface.
 ## Example:
 ```javascript
 #!/usr/bin/nodejs
-var     mqtt            = require('node-domoticz-mqtt');
+var	mqtt		= require('node-domoticz-mqtt');
 
 // Options:
 var options = {
-        idx:            [ 1, 2, 3, 4 ],
-        host:           'localhost',
+	idx:            [ 1, 2, 3, 4 ],
+	host:           'localhost',
 	request:	true,
-        log:            false
+	log:            false
 };
 
 var domoticz = new mqtt.domoticz(options);
