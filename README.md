@@ -73,6 +73,8 @@ domoticz.request(idx);
 * log - boolean to show detailed logs, defaults to false
 
 ## More
+* NPM Project Page: https://www.npmjs.com/package/node-domoticz-mqtt
+* GitHub Project Page: https://github.com/nayrnet/node-domoticz-mqtt
 * Domoticz Discussion: https://www.domoticz.com/forum/viewtopic.php?f=21&t=10190
 * Implemented in: https://github.com/nayrnet/domoticz-htc
 
