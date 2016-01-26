@@ -15,6 +15,7 @@ var     mqtt            = require('node-domoticz-mqtt');
 var options = {
         idx:            [ 1, 2, 3, 4 ],
         host:           'localhost',
+	request:	true,
         log:            false
 };
 
@@ -67,10 +68,11 @@ domoticz.request(idx);
 ```
 
 ## Options
-* idx - an array of device idx to watch and update on connect.
-* status - MQTT Path for reporting your app is online 
-* host - Host of your MQTT Broker, defaults to localhost
-* log - boolean to show detailed logs, defaults to false
+* idx - an array of device idx to watch and update on connect. defaults to none.
+* status - MQTT Path for reporting your app is online, optional.
+* host - Host of your MQTT Broker, defaults to localhost.
+* request - booolean to request updates for all IDX on connect, defaults to true.
+* log - boolean to show detailed logs, defaults to false.
 
 ## More
 * NPM Project Page: https://www.npmjs.com/package/node-domoticz-mqtt
