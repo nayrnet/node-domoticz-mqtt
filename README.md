@@ -13,24 +13,24 @@ var	mqtt		= require('node-domoticz-mqtt');
 
 // Options:
 var options = {
-	idx:            [ 1, 2, 3, 4 ],
-	host:           'localhost',
+	idx:		[ 1, 2, 3, 4 ],
+	host:		'localhost',
 	request:	true,
-	log:            false
+	log:		false
 };
 
 var domoticz = new mqtt.domoticz(options);
 
 // Log anything matching our IDX
 domoticz.on('data', function(data) {
-        message = JSON.stringify(data)
-        console.log(message.toString());
+	message = JSON.stringify(data)
+	console.log(message.toString());
 });
 
 // Set IDX #1 to ON after connection and log our connection.
 domoticz.on('connect', function() {
-        domoticz.switch(1,100);
-        domoticz.log('My example app connected.');
+	domoticz.switch(1,100);
+	domoticz.log('My example app connected.');
 });
 ```
 
