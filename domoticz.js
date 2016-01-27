@@ -31,7 +31,7 @@ domoticz.prototype.connect = function(host) {
 	domoMQTT.on('message', function (topic, message) {
         	var jsonData = JSON.parse(message)
 	        if (TRACE) { console.log('MQTT IN: ' + message.toString()) };
-	        if ((IDX.contains(jsonData.idx)) && (REQUEST)) {
+	        if (IDX.contains(jsonData.idx)) {
 	                self.mqttData(jsonData);
         	}
 	});
@@ -42,9 +42,11 @@ domoticz.prototype.connect = function(host) {
         	domoMQTT.subscribe('domoticz/out');
 		if (TRACE) { console.log("Domoticz MQTT: connected") };
 		var i = 0;
-		while (IDX[i]) {		// Request Fresh device status on connect.
-			self.request(IDX[i]);
-			i++;
+		if (REQUEST) {
+			while (IDX[i]) {		// Request Fresh device status on connect.
+				self.request(IDX[i]);
+				i++;
+			}
 		}
 		self.emit('connect');
 	});
