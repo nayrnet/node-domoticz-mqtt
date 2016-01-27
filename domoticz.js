@@ -98,7 +98,7 @@ domoticz.prototype.switch = function(id,lvl) {
 // Publish uDevice Commands
 domoticz.prototype.device = function(id,nvalue,svalue) {
 	var self = this;
-	if ((isNaN(id)) || (isNaN(nvalue))) { 
+	if ((isNaN(id)) || (isNaN(nvalue)) || (typeof svalue === 'undefined')) { 
 		self.emit('error','invalid device input')
 		return false 
 	}
@@ -125,7 +125,7 @@ domoticz.prototype.scene = function(id,cmd) {
 // Publish User Variable
 domoticz.prototype.uservar = function(id,val) {
 	var self = this;
-	if ((isNaN(id)) || (!val)) { 
+	if ((isNaN(id)) || (typeof val === 'undefined')) { 
 		self.emit('error','invalid uservar input')
 		return false 
 	}
@@ -138,7 +138,7 @@ domoticz.prototype.uservar = function(id,val) {
 // Publish Domoticz Notification
 domoticz.prototype.notify = function(subject,body,priority,sound) {
 	var self = this;
-	if ((!subject) || (!body)) { 
+	if ((typeof subject === 'undefined') || (typeof body === 'undefined')) { 
 		self.emit('error','invalid notification input')
 		return false 
 	}
@@ -166,7 +166,7 @@ domoticz.prototype.request = function(id) {
 // Publish Domoticz Log Entry
 domoticz.prototype.log = function(msg) {
 	var self = this;
-	if (!msg) { 
+	if (typeof msg === 'undefined') { 
 		self.emit('error','invalid log input')
 		return false 
 	}
