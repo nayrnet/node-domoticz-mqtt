@@ -45,7 +45,7 @@ domoticz.on('connect', function(){  });
 // Callback on error
 domoticz.on('error', function(error){  });
 
-// Publish Switch:  level 0 = Off, level 100 = On, level -1 = Toggle, level 1-99 = Set Level
+// Publish Switch:  level commands: 0 = Off/255 = On/-1 = Toggle/1-100 = Set Level
 domoticz.switch(idx,level);
 
 // Publish uDevice: nvalue = int, svalue = string

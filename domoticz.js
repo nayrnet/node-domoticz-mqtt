@@ -77,7 +77,7 @@ domoticz.prototype.mqttData = function(data) {
 	return self;
 }
 
-// Publish Switch Commands (0=Off/100=On/-1=Toggle)
+// Publish Switch Commands (0=Off/255=On/-1=Toggle)
 domoticz.prototype.switch = function(id,lvl) {
 	var self = this;
 	if ((isNaN(id)) || (isNaN(lvl))) { 
@@ -85,11 +85,12 @@ domoticz.prototype.switch = function(id,lvl) {
 		return false 
 	};
         var cmd = "Set Level";
-        if (lvl > 99) { cmd = "On" }
+        if (lvl === 255) { cmd = "On" }
         else if (lvl === 0) { cmd = "Off" }
         else if (lvl < 0) { cmd = "Toggle" }
+        else if (lvl > 99) { lvl = 100 }
         var state = { 'command': 'switchlight', 'idx': id, 'switchcmd': cmd };
-	if ((cmd === 'Set Level')||(cmd === 'On')) { state['level'] = lvl };
+	if (cmd === 'Set Level') { state['level'] = lvl };
         if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state).toString()) }
         self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
 	return true;
