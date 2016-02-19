@@ -1,6 +1,6 @@
 {
   "name": "node-domoticz-mqtt",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Domoticz-MQTT Module",
   "main": "domoticz.js",
   "dependencies": {

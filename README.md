@@ -48,6 +48,9 @@ domoticz.on('error', function(error){  });
 // Publish Switch:  level commands: 0 = Off/255 = On/-1 = Toggle/1-100 = Set Level
 domoticz.switch(idx,level);
 
+// Publish Contact Switch Open/Close:
+domoticz.switchContact(idx,boolean);
+
 // Publish uDevice: nvalue = int, svalue = string
 domoticz.device(idx,nvalue,svalue);
 

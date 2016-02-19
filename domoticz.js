@@ -61,9 +61,6 @@ domoticz.prototype.connect = function(host) {
 	process.on( "SIGINT", function() {
 	        domoMQTT.publish(STATUS, 'false');
 		domoMQTT.end();
-	        setTimeout(function() {
-                	process.exit()
-        	}, 500);
 	});
 
 	return domoMQTT;
@@ -91,6 +88,21 @@ domoticz.prototype.switch = function(id,lvl) {
         else if (lvl > 99) { lvl = 100 }
         var state = { 'command': 'switchlight', 'idx': id, 'switchcmd': cmd };
 	if (cmd === 'Set Level') { state['level'] = lvl };
+        if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state).toString()) }
+        self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
+	return true;
+}
+
+// Publish Contact Switch Commands
+domoticz.prototype.switchContact = function(id,lvl) {
+	var self = this;
+	if ((isNaN(id)) || (isNaN(lvl))) { 
+		self.emit('error','invalid contact switch input')
+		return false 
+	};
+        if (lvl) { lvl=1 }
+        else { lvl=0 };
+        var state = { 'command': 'udevice', 'idx': id, 'nvalue': lvl };
         if(TRACE) { console.log('domoticz/in: ' + JSON.stringify(state).toString()) }
         self.domoMQTT.publish('domoticz/in', JSON.stringify(state));
 	return true;
